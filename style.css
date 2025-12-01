@@ -179,6 +179,145 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+/* --- Nouveaux Styles pour les Sections Réalisations, Équipe et Témoignages --- */
+
+/* Style de base pour les nouvelles sections */
+.projects-section, .team-section, .testimonials-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.projects-section {
+    background-color: var(--white-color);
+}
+
+.team-section {
+    background-color: var(--secondary-color); /* Gris clair */
+}
+
+.testimonials-section {
+    background-color: var(--white-color);
+}
+
+.projects-section h3, .team-section h3, .testimonials-section h3 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+/* --- Section Réalisations (Grid et Cartes) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--white-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    transition: box-shadow 0.3s;
+}
+
+.project-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Hauteur fixe pour les images de projet */
+    object-fit: cover;
+}
+
+.project-card h4 {
+    padding: 15px 15px 5px 15px;
+    color: var(--primary-color);
+}
+
+.project-card p {
+    padding: 0 15px 20px 15px;
+    font-size: 0.9em;
+}
+
+/* --- Section Équipe (Grid et Membres) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    padding: 20px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.member-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Image ronde */
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    border: 3px solid var(--primary-color);
+}
+
+.team-member h4 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.team-member .role {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* --- Section Témoignages (Grid et Cartes) --- */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 5px solid var(--primary-color);
+}
+
+.testimonial-card i {
+    color: var(--primary-color);
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.testimonial-card .client-name {
+    font-style: normal;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+/* Ajoutez cette règle dans votre section Media Queries si vous l'avez */
+@media (max-width: 768px) {
+    /* ... (règles existantes) ... */
+    
+    /* Pour forcer une seule colonne sur mobile pour les nouvelles grilles */
+    .projects-grid, .team-grid, .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* --- Section Contact --- */
 .contact-section {
     padding: 60px 0;
