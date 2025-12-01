@@ -43,8 +43,7 @@ header .container {
     padding: 10px 0;
 }
 
-
-
+/* Style du Logo (Image + Texte) */
 .logo a {
     text-decoration: none;
     display: flex; 
@@ -63,15 +62,8 @@ header .container {
     font-size: 1.6em; 
     font-weight: bold;
     color: var(--primary-color); 
-    white-space: nowrap; 
+    white-space: nowrap;
 }
-
-@media (max-width: 600px) {
-    .logo-text {
-        display: none; 
-    }
-}
-
 
 nav ul {
     list-style: none;
@@ -88,6 +80,19 @@ nav ul li a {
 nav ul li a:hover {
     color: var(--primary-color);
 }
+
+/* --- Bouton Hamburger (Visible uniquement sur Mobile) --- */
+.hamburger {
+    display: none; /* Masqué par défaut sur PC */
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Doit être au-dessus du menu */
+}
+
 
 /* --- Boutons Génériques --- */
 .btn {
@@ -113,13 +118,12 @@ nav ul li a:hover {
 
 /* --- Section Accueil (Hero) --- */
 .hero {
-    height: 90vh;
-    background: url('assets/imgs/jambar_hero.png') no-repeat center center/cover; /* Remplacer par une image de fond pertinente */
+    background: url('assets/imgs/jambar_hero.png') no-repeat center center/cover;
     background-color: #000000;
     color: var(--white-color);
     text-align: center;
     padding: 100px 20px;
-    min-height: 300px;
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,19 +139,27 @@ nav ul li a:hover {
     margin-bottom: 30px;
 }
 
-/* --- Section Services --- */
-.services-section {
+/* --- Sections Services, Réalisations, Équipe, Témoignages (Styles de Base) --- */
+.services-section, .projects-section, .team-section, .testimonials-section {
     padding: 60px 0;
     text-align: center;
+}
+
+.services-section, .team-section {
     background-color: var(--secondary-color);
 }
 
-.services-section h3 {
+.projects-section, .testimonials-section {
+    background-color: var(--white-color);
+}
+
+.services-section h3, .projects-section h3, .team-section h3, .testimonials-section h3 {
     font-size: 2em;
     margin-bottom: 40px;
     color: var(--primary-color);
 }
 
+/* --- Section Services (Grille) --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -179,33 +191,7 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-/* --- Nouveaux Styles pour les Sections Réalisations, Équipe et Témoignages --- */
-
-/* Style de base pour les nouvelles sections */
-.projects-section, .team-section, .testimonials-section {
-    padding: 60px 0;
-    text-align: center;
-}
-
-.projects-section {
-    background-color: var(--white-color);
-}
-
-.team-section {
-    background-color: var(--secondary-color); /* Gris clair */
-}
-
-.testimonials-section {
-    background-color: var(--white-color);
-}
-
-.projects-section h3, .team-section h3, .testimonials-section h3 {
-    font-size: 2em;
-    margin-bottom: 40px;
-    color: var(--primary-color);
-}
-
-/* --- Section Réalisations (Grid et Cartes) --- */
+/* --- Section Réalisations (Grille) --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -227,7 +213,7 @@ nav ul li a:hover {
 
 .project-card img {
     width: 100%;
-    height: 200px; /* Hauteur fixe pour les images de projet */
+    height: 200px;
     object-fit: cover;
 }
 
@@ -241,7 +227,7 @@ nav ul li a:hover {
     font-size: 0.9em;
 }
 
-/* --- Section Équipe (Grid et Membres) --- */
+/* --- Section Équipe (Grille) --- */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -258,7 +244,7 @@ nav ul li a:hover {
 .member-photo {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* Image ronde */
+    border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 15px auto;
     border: 3px solid var(--primary-color);
@@ -275,7 +261,7 @@ nav ul li a:hover {
     font-size: 0.9em;
 }
 
-/* --- Section Témoignages (Grid et Cartes) --- */
+/* --- Section Témoignages (Grille) --- */
 .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -306,16 +292,6 @@ nav ul li a:hover {
     font-weight: bold;
     color: var(--text-color);
     margin-top: 10px;
-}
-
-/* Ajoutez cette règle dans votre section Media Queries si vous l'avez */
-@media (max-width: 768px) {
-    /* ... (règles existantes) ... */
-    
-    /* Pour forcer une seule colonne sur mobile pour les nouvelles grilles */
-    .projects-grid, .team-grid, .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* --- Section Contact --- */
@@ -382,13 +358,13 @@ nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     z-index: 1002;
-    transform: scale(0); /* Initialement caché */
+    transform: scale(0); 
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
 }
 
 .whatsapp-popup.show {
-    transform: scale(1); /* Afficher */
+    transform: scale(1);
 }
 
 .whatsapp-header {
@@ -438,20 +414,81 @@ footer {
     font-size: 0.9em;
 }
 
-/* --- Media Queries pour la Responsivité --- */
+/* ************************************************* */
+/* 📱 MEDIA QUERIES pour la Responsivité (Smartphone) */
+/* ************************************************* */
+
 @media (max-width: 768px) {
+    /* 1. Header et Navigation */
     header .container {
-        flex-direction: column;
+        /* Permet de placer le logo à gauche et le hamburger à droite */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
     }
+    
+    /* 2. Afficher le bouton hamburger */
+    .hamburger {
+        display: block;
+    }
+
+    /* 3. Masquer le nom de l'entreprise si l'écran est très petit */
+    .logo-text {
+        display: none; 
+    }
+
+    /* 4. Transformation du Menu NAV */
+    nav {
+        /* Permet au menu de se superposer au contenu lorsqu'il est ouvert */
+        position: absolute;
+        top: 60px; /* Position sous le header */
+        left: 0;
+        width: 100%;
+        min-height: 100vh; /* Menu prend toute la hauteur de la vue */
+        background-color: var(--text-color); /* Fond sombre pour le menu */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        /* Cacher la navigation par défaut (glisse vers la gauche) */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+    
+    /* 5. Style pour la navigation ouverte (géré par JS) */
+    nav.active {
+        transform: translateX(0);
+    }
+
+    /* 6. Réorganisation des liens en colonne */
     nav ul {
-        margin-top: 10px;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
     }
+
+    nav ul li {
+        text-align: left;
+        border-bottom: 1px solid #444; /* Séparateur de liens */
+    }
+
     nav ul li a {
-        padding: 5px 10px;
+        padding: 15px 20px;
+        display: block;
+        color: var(--white-color); /* Texte en blanc pour le fond sombre */
     }
-    .hero h2 {
-        font-size: 2.2em;
+
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
     }
+
+    /* 7. Adapter les Grilles (1 colonne sur mobile) */
+    .projects-grid, .team-grid, .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 8. Adapter la Pop-up WhatsApp */
     .whatsapp-popup {
         width: 90%;
         right: 5%;
