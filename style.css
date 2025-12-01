@@ -118,6 +118,7 @@ nav ul li a:hover {
 
 /* --- Section Accueil (Hero) --- */
 .hero {
+    height: 90vh;
     background: url('assets/imgs/jambar_hero.png') no-repeat center center/cover;
     background-color: #000000;
     color: var(--white-color);
